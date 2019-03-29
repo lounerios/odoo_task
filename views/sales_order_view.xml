@@ -2,10 +2,10 @@
 <odoo>
     <record id="view_product_template_sales_margin" model="ir.ui.view">
         <field name="name">sale.order.line.view_margin</field>
-        <field name="model">sale.order.line</field>
+        <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-          <xpath expr="//field[@name='tax_id']" position="after">
+          <xpath expr="//page[1]/field[@name='order_line']/tree/field[@name='tax_id']" position="after">
              <field name="sales_margin"/>
           </xpath>
       </field>
