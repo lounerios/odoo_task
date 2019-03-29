@@ -9,9 +9,8 @@
     'version': '0.2',
     'depends': ['base','sale'],
     'data': [
-        # 'security/ir.model.access.csv',
           'views/product_sales_margin_view.xml',
-          'views/sales_order_view.xml',
+          'views/orderline_sales_margin_view.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
