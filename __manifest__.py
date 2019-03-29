@@ -6,11 +6,12 @@
     'author': "Lucas Simopoulos",
     'website': "http://www.yourcompany.com",
     'category': 'Uncategorized',
-    'version': '0.1',
+    'version': '0.2',
     'depends': ['base','sale'],
     'data': [
         # 'security/ir.model.access.csv',
           'views/sales_margin_view.xml',
+          'views/sales_order_view.xml'
     ],
     # only loaded in demonstration mode
     'demo': [

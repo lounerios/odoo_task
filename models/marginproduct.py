@@ -20,3 +20,9 @@ class SalesMarginProduct(models.Model):
 
         self.list_price = self.standard_price / self.sales_margin
         print(self.list_price)
+
+
+class SalesMarginOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    sales_margin = fields.Float(string='Sales Margin',digits=(1,2), default='1.00')
