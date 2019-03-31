@@ -10,7 +10,7 @@
     'depends': ['base','sale'],
     'data': [
           'views/product_sales_margin_view.xml',
-          'views/orderline_sales_margin_view.xml',
+          'views/orderline_sales_margin_view.xml',          
     ],
     # only loaded in demonstration mode
     'demo': [
