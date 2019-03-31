@@ -29,6 +29,7 @@ class SalesMarginOrderLine(models.Model):
 
     sales_margin = fields.Float(string='Sales Margin',digits=(1,2), default='1.00')
     cost = fields.Float(string='Cost', related='product_id.product_tmpl_id.standard_price', readonly=True)
+    salespersons_ids = fields.Many2many('res.users', string='Sales Persons')
 
     @api.onchange('product_id')
     def product_is_changed(self):
