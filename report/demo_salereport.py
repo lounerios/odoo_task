@@ -11,11 +11,27 @@ class CustomSaleReport(models.Model):
     _inherit = 'sale.report'
 
     order_line_id = fields.Integer('Order Line', readonly=True)
+    sales_person_id = fields.Integer('New Sale Person', readonly=True)
 
     def _select(self):
         _logger.debug("Select")
-        return super()._select()+', l.id as order_line_id'
+        select_str = """
+            , l.id as order_line_id,
+            rs.res_users_id as sales_person_id
+        """
+        return super()._select()+select_str
+
+    def _from(self):
+        _logger.debug("From")
+        from_str = """
+            left join res_users_sale_order_line_rel rs on (l.id = rs.sale_order_line_id)
+        """
+        return super()._from()+from_str
 
     def _group_by(self):
         _logger.debug("Group by")
-        return super()._group_by()+', l.id'
+        _group_by_str = """
+            , l.id,
+            rs.res_users_id
+        """
+        return super()._group_by()+_group_by_str

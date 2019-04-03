@@ -38,6 +38,13 @@ class SalesMarginOrderLine(models.Model):
             product_template = self.env['product.template'].browse([self.product_id.product_tmpl_id.id])
             self.sales_margin = product_template.sales_margin
 
+    @api.onchange('sales_margin')
+    def sales_margin_is_changed(self):
+        _logger.debug("Sales margin is changed")
+        if(self.sales_margin > 0):
+           product_template = self.env['product.template'].browse([self.product_id.product_tmpl_id.id])
+           self.price_unit = product_template.standard_price / self.sales_margin
+
     @api.onchange('price_unit')
     def price_unit_is_changed(self):
         _logger.debug('Price unit is changed')
